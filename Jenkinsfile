@@ -6,6 +6,7 @@ pipeline {
         stage('Build app') {
             steps {
                 dir("ReferenceAndroid") {
+                    echo "Hello World"
                     sh "./gradlew assembleDebug"
                 }
             }
