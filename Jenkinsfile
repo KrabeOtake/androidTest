@@ -1,5 +1,5 @@
 pipeline {
-    agent { label 'qtest'}
+    agent any
 
     stages {
         // The first two stages below are explicitly mentioned so they are reported in Jenkins properly.
