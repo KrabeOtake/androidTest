@@ -5,7 +5,7 @@ pipeline {
         // The first two stages below are explicitly mentioned so they are reported in Jenkins properly.
         stage('Build app') {
             steps {
-                    sh "${env.ANDROID_HOME}/emulator/emulator -avd Pixel_2_API_28 -wipe-data -engine auto -no-audio -gpu off"
+                    sh "${env.ANDROID_HOME}/emulator/emulator -avd Pixel_2_API_28 -wipe-data -engine auto -no-audio -no-window"
                     echo "Hello World"
                     sh "./gradlew assembleDebug"
             }
