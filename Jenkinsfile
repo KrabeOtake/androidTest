@@ -1,12 +1,11 @@
 pipeline {
-    def ADB="${env.ANDROID_HOME}/platform-tools/adb"
     agent { label 'qtest'}
 
     stages {
         // The first two stages below are explicitly mentioned so they are reported in Jenkins properly.
         stage('Build app') {
             steps {
-                    sh "$ADB wait-for-device"
+                    sh "echo ${env.ANDROID_HOME}"
                     echo "Hello World"
                     sh "./gradlew assembleDebug"
             }
