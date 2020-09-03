@@ -18,7 +18,6 @@ pipeline {
         
         stage('Instumental tests') {
             steps {
-                sh "adb start-server"
                 sh "./gradlew connectedAndroidTest"
             }
         }
