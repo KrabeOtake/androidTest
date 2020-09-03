@@ -1,7 +1,5 @@
 pipeline {
-    def ANDROID_HOME='/Users/Shared/Android/sdk'
-    def ADB="$ANDROID_HOME/platform-tools/adb"
-    
+    def ADB="${env.ANDROID_HOME}/platform-tools/adb"
     agent { label 'qtest'}
 
     stages {
