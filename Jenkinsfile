@@ -6,7 +6,7 @@ pipeline {
         stage('Build app') {
             steps {
                 
-                    sh "${env.ANDROID_HOME}/emulator/emulator -avd Pixel_2_API_28 -memory 3072 -no-audio -wipe-data -debug -all"
+                    sh "${env.ANDROID_HOME}/emulator/emulator -avd Pixel_XL_API_30 -no-audio -wipe-data -debug -all"
                     //sh "${env.ANDROID_HOME}/emulator/emulator -avd Pixel_2_API_28 -wipe-data -engine auto -port 5554 -no-audio -no-boot-anim -no-window -gpu off -no-cache -memory 3072"
                     echo "Hello World"
                     sh "./gradlew assembleDebug"
