@@ -7,7 +7,7 @@ pipeline {
             steps {
                 
                     //sh "echo no | ${env.ANDROID_HOME}/tools/bin/avdmanager create avd --force --name test --abi google_apis/x86_64 --package 'system-images;android-28;google_apis;x86_64'"
-                    sh "${env.ANDROID_HOME}/emulator/emulator -avd Pixel_2_API_28 -memory 3072 & $ANDROID_HOME/platform-tools/adb wait-for-device"
+                    //sh "${env.ANDROID_HOME}/emulator/emulator -avd Pixel_2_API_28 -memory 3072 & $ANDROID_HOME/platform-tools/adb wait-for-device"
                     //sh "${env.ANDROID_HOME}/emulator/emulator -avd Pixel_2_API_28 -wipe-data -engine auto -port 5554 -no-audio -no-boot-anim -no-window -gpu off -no-cache -memory 3072"
                     
                     sh "./gradlew assembleDebug"
@@ -30,7 +30,7 @@ pipeline {
                 always {
                     sh "cd ${env.ANDROID_HOME}"
                     sh "ls"
-                    junit '${env.ANDROID_HOME}/app/build/reports/**/*.xml'
+                    junit '${env.ANDROID_HOME}/app/build/reports/androidTests/connected/*.xml'
                     submitJUnitTestResultsToqTest([apiKey: '1312d354-eb15-4817-9f89-a7b9bb717685', containerID: 527351, containerType: 'release', createTestCaseForEachJUnitTestClass: true, createTestCaseForEachJUnitTestMethod: false, overwriteExistingTestSteps: true, parseTestResultsFromTestingTools: false, projectID: 101677, qtestURL: 'https://androidtest.qtestnet.com/', submitToAReleaseAsSettingFromQtest: true, submitToExistingContainer: false, utilizeTestResultsFromCITool: true])
                 }
             }
