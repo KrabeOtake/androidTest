@@ -7,7 +7,7 @@ pipeline {
             steps {
                 
                     //sh "echo no | ${env.ANDROID_HOME}/tools/bin/avdmanager create avd --force --name test --abi google_apis/x86_64 --package 'system-images;android-28;google_apis;x86_64'"
-                    sh "${env.ANDROID_HOME}/emulator/emulator -avd Pixel_2_API_28 -memory 3072"
+                    sh "${env.ANDROID_HOME}/emulator/emulator -avd Pixel_2_API_28 -memory 3072 & $ANDROID_HOME/platform-tools/adb wait-for-device"
                     //sh "${env.ANDROID_HOME}/emulator/emulator -avd Pixel_2_API_28 -wipe-data -engine auto -port 5554 -no-audio -no-boot-anim -no-window -gpu off -no-cache -memory 3072"
                     echo "Hello World"
                     sh "./gradlew assembleDebug"
