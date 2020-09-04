@@ -23,6 +23,6 @@ class ExampleInstrumentedTest {
 
     @Test
     fun useAppContext() {
-        onView(withText("Hello World!")).check(matches(isDisplayed()))
+        onView(withText("Hello World")).check(matches(isDisplayed()))
     }
 }
