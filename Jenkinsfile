@@ -28,7 +28,7 @@ pipeline {
                 }
             post {
                 always {
-                    sh "cd ${env.ANDROID_HOME}/app/build/reports/androidTests/connected"
+                    sh "cd ${env.ANDROID_HOME}/app/build/reports/androidTests"
                     sh "ls"
                     junit '${env.ANDROID_HOME}/app/build/reports/androidTests/connected/index.xml'
                     submitJUnitTestResultsToqTest([apiKey: '1312d354-eb15-4817-9f89-a7b9bb717685', containerID: 527351, containerType: 'release', createTestCaseForEachJUnitTestClass: true, createTestCaseForEachJUnitTestMethod: false, overwriteExistingTestSteps: true, parseTestResultsFromTestingTools: false, projectID: 101677, qtestURL: 'https://androidtest.qtestnet.com/', submitToAReleaseAsSettingFromQtest: true, submitToExistingContainer: false, utilizeTestResultsFromCITool: true])
