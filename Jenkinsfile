@@ -24,6 +24,8 @@ pipeline {
                 always {
                     junit 'app/build/outputs/androidTest-results/connected/*.xml'
                     submitJUnitTestResultsToqTest([apiKey: '1312d354-eb15-4817-9f89-a7b9bb717685', containerID: 527351, containerType: 'release', createTestCaseForEachJUnitTestClass: false, createTestCaseForEachJUnitTestMethod: true, overwriteExistingTestSteps: true, parseTestResultsFromTestingTools: false, projectID: 101677, qtestURL: 'https://androidtest.qtestnet.com/', submitToAReleaseAsSettingFromQtest: true, submitToExistingContainer: false, utilizeTestResultsFromCITool: true])
+                    slackSend channel: '#jenkins-test', 
+                              message: 'Hello, world'
                 }
             }
         }
