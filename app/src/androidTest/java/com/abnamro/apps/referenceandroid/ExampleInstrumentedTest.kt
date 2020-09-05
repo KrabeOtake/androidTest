@@ -42,6 +42,12 @@ class ExampleInstrumentedTest {
     }
 
     @Test
+    fun checkToolbarOptions() {
+        openActionBarOverflowOrOptionsMenu(getInstrumentation().getTargetContext())
+        onView(withText(R.string.action_settings)).check(matches(isDisplayed()))
+    }
+
+    @Test
     fun checkToolbarSelectOption() {
         openActionBarOverflowOrOptionsMenu(getInstrumentation().getTargetContext())
         onView(withText(R.string.action_settings)).perform(click())
