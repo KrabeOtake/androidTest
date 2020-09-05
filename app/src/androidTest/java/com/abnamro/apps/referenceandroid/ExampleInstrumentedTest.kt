@@ -1,11 +1,14 @@
 package com.abnamro.apps.referenceandroid
 
-import androidx.test.espresso.Espresso.onView
+import androidx.test.espresso.Espresso.*
+import androidx.test.espresso.action.ViewActions.click
+import androidx.test.espresso.assertion.ViewAssertions.doesNotExist
 import androidx.test.espresso.assertion.ViewAssertions.matches
-import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
-import androidx.test.espresso.matcher.ViewMatchers.withText
-import androidx.test.ext.junit.runners.AndroidJUnit4
+import androidx.test.espresso.matcher.ViewMatchers.*
 import androidx.test.ext.junit.rules.ActivityScenarioRule
+import androidx.test.ext.junit.runners.AndroidJUnit4
+import androidx.test.platform.app.InstrumentationRegistry.getInstrumentation
+import com.abnamro.apps.referenceandroid.utils.waitView
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -22,7 +25,26 @@ class ExampleInstrumentedTest {
     val activityRule = ActivityScenarioRule(MainActivity::class.java)
 
     @Test
-    fun useAppContext() {
+    fun checkMainText() {
         onView(withText("Hello World!")).check(matches(isDisplayed()))
+    }
+
+    @Test
+    fun checkFabTap() {
+        onView(withId(R.id.fab)).check(matches(isDisplayed())).perform(click())
+        onView(isRoot()).perform(waitView(withText("Replace with your own action")))
+    }
+
+    @Test
+    fun checkToolbarTitle() {
+        onView(withId(R.id.toolbar)).check(matches(isDisplayed()))
+        onView(withText(R.string.app_name)).check(matches(withParent(withId(R.id.toolbar))))
+    }
+
+    @Test
+    fun checkToolbarSelectOption() {
+        openActionBarOverflowOrOptionsMenu(getInstrumentation().getTargetContext())
+        onView(withText(R.string.action_settings)).perform(click())
+        onView(withText(R.string.action_settings)).check(doesNotExist())
     }
 }
