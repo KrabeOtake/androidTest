@@ -16,3 +16,17 @@ PS. We don't expect you to spend weeks (and sleepless nights) on doing it. Lets 
 PSPS. Please use mobile native tools. (Tests written on Java are accepted too)
 
 
+# SUMMARY
+
+## Espresso
+Since it's a hello world. app, there isn't much to test. Espresso tests are more to show the integration with Jenkins and qTest
+
+## Jenkins
+Launched and connected a local Jenkins pipeline. It's set up to trigger a build after each push. The build steps and stages are described in Jenkinsfile.
+
+![Jenkins screenshot](https://i.ibb.co/jwQYJhy/Screenshot-2020-09-05-at-00-16-05.png)
+![Jenkins screenshot](https://i.ibb.co/RcyJPPY/Screenshot-2020-09-05-at-00-13-12.png)
+
+## qTest
+The jUnit results of instrumented tests are uploaded to the qTest Manager [here](https://androidtest.qtestnet.com/) as a last step of a build.
+![qTest screenshot](https://i.ibb.co/nLq2rMB/Screenshot-2020-09-05-at-00-14-49.png)
