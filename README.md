@@ -18,15 +18,34 @@ PSPS. Please use mobile native tools. (Tests written on Java are accepted too)
 
 # SUMMARY
 
+## Test cases
+There are 5 test cases that are stored on qTest Manager. 
+- Check if "Hello world!" text is displayed
+- Tap the float action button
+- Check if toolbar title is displayed
+- Tap the toolbar menu 
+- Tap the toolbar menu "Settings" item
+
+Each test case has defined steps and expected result description. Each test case is linked to its correspondent espresso autotest. The result of each espresso autotest is uploaded to the correspondent test case's execution table.
+![Testcase screenshot](https://i.ibb.co/8K0h55j/Screenshot-2020-09-06-at-01-16-48.png)
+
 ## Espresso
-Since it's a hello world. app, there isn't much to test. Espresso tests are more to show the integration with Jenkins and qTest
+Since it's a hello world. app, there isn't much to test. Espresso tests are more to show the integration with Jenkins and qTest.
+There are 5 autotests located in `ExampleInstrumentedTest` class (one for each test case).
+There is one custom view action - `waitView`, which waits for a view to appear on the screen =)
 
 ## Jenkins
 Launched and connected a local Jenkins pipeline. It's set up to trigger a build after each push. The build steps and stages are described in Jenkinsfile.
+There are 3 stages defined in Jenkinsfile:
+- Build app
+- Build test app
+- Instrumented test
 
-![Jenkins screenshot](https://i.ibb.co/jwQYJhy/Screenshot-2020-09-05-at-00-16-05.png)
+Inside the last stage we launch the emulator, wait for it to boot and launching the espresso test run.
+![Jenkins screenshot](https://i.ibb.co/W3nJZfz/Screenshot-2020-09-06-at-01-16-19.png)
+As a post-build action we generate a jUnit report and upload it to qTest
 ![Jenkins screenshot](https://i.ibb.co/RcyJPPY/Screenshot-2020-09-05-at-00-13-12.png)
 
 ## qTest
 The jUnit results of instrumented tests are uploaded to the qTest Manager [here](https://androidtest.qtestnet.com/) as a last step of a build.
-![qTest screenshot](https://i.ibb.co/nLq2rMB/Screenshot-2020-09-05-at-00-14-49.png)
+![qTest screenshot](https://i.ibb.co/9w7x8T8/Screenshot-2020-09-06-at-01-38-06.png)
