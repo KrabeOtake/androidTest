@@ -32,7 +32,9 @@ pipeline {
                 always {
                     junit 'app/build/outputs/androidTest-results/connected/*.xml'
                     submitJUnitTestResultsToqTest([apiKey: '1312d354-eb15-4817-9f89-a7b9bb717685', containerID: 527351, containerType: 'release', createTestCaseForEachJUnitTestClass: false, createTestCaseForEachJUnitTestMethod: true, overwriteExistingTestSteps: true, parseTestResultsFromTestingTools: false, projectID: 101677, qtestURL: 'https://androidtest.qtestnet.com/', submitToAReleaseAsSettingFromQtest: true, submitToExistingContainer: false, utilizeTestResultsFromCITool: true])
-                    BUILD_USER = getBuildUser()
+                    script {
+                        BUILD_USER = getBuildUser()
+                    }
                     slackSend channel: '#jenkins-test', 
                               color: COLOR_MAP[currentBuild.currentResult],
                               message: "*${currentBuild.currentResult}:* Job ${env.JOB_NAME} build ${env.BUILD_NUMBER} by ${BUILD_USER}\n More info at: ${env.BUILD_URL}"
