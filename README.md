@@ -44,9 +44,14 @@ There are 3 stages defined in Jenkinsfile:
 Inside the last stage we launch the emulator, wait for it to boot and launching the espresso test run.
 ![Jenkins screenshot](https://i.ibb.co/W3nJZfz/Screenshot-2020-09-06-at-01-16-19.png)
 
-As a post-build action we generate a jUnit report and upload it to qTest
+As a post-build action we generate a jUnit report and upload it to qTest:
 ![Jenkins screenshot](https://i.ibb.co/RcyJPPY/Screenshot-2020-09-05-at-00-13-12.png)
 
 ## qTest
-The jUnit results of instrumented tests are uploaded to the qTest Manager [here](https://androidtest.qtestnet.com/) as a last step of a build.
+The jUnit results of instrumented tests are uploaded to the qTest Manager [here](https://androidtest.qtestnet.com/) inside a post-build action:
 ![qTest screenshot](https://i.ibb.co/9w7x8T8/Screenshot-2020-09-06-at-01-38-06.png)
+
+## Slack notification
+As a last step of psot-build action, we send a slack message to our #jenkins-test channel to notify developers about the build status:
+
+![Slack screenshot](https://i.ibb.co/MRKz3Yh/Screenshot-2020-09-06-at-02-33-21.png)
