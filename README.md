@@ -55,3 +55,6 @@ The jUnit results of instrumented tests are uploaded to the qTest Manager [here]
 As a last step of psot-build action, we send a slack message to our #jenkins-test channel to notify developers about the build status:
  
 ![Slack screenshot](https://i.ibb.co/MRKz3Yh/Screenshot-2020-09-06-at-02-33-21.png)
+
+## Youtube
+https://youtu.be/Ray2xzjfC94
