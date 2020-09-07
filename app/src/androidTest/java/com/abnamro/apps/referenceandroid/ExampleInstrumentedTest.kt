@@ -26,6 +26,7 @@ class ExampleInstrumentedTest {
 
     @Test
     fun checkMainText() {
+        onView(isRoot()).perform(waitView(withText("Hello World!")))
         onView(withText("Hello World!")).check(matches(isDisplayed()))
     }
 
